@@ -49,3 +49,52 @@ void pall(stack_t **stack, unsigned int line_num)
 		current = current->next;
 	}
 }
+
+/**
+ * pint - Prints the value at the top the stack.
+ * @stack: Double pointer to the head of the stack.
+ * @line_num: Line number in the Monty code file.
+ *
+ * Return: The value at the top of the stack.
+ * Or if the stack is empty print error message
+ * and exits with EXIT_FAILURE
+ */
+
+void pint(stack_t **stack, unsigned int line_num)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

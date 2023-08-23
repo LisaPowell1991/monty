@@ -39,6 +39,7 @@ typedef struct instruction_s
 /*opcodes_functions1.c*/
 void push(stack_t **stack, int value, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
+void pint(stack_t **stack, unsigned int line_num);
 
 /* execute_opcodes.c */
 void execute_instruction(char *opcode, int value,stack_t **stack, unsigned int line_num);
