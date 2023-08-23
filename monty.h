@@ -38,6 +38,7 @@ typedef struct instruction_s
 
 /*opcodes_functions1.c*/
 void push(stack_t **stack, int value, unsigned int line_num);
+void handle_malloc_failure();
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
 
