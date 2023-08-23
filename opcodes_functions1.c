@@ -65,7 +65,7 @@ void pall(stack_t **stack, unsigned int line_num)
  * @stack: Double pointer to the head of the stack.
  * @line_num: Line number in the Monty code file.
  *
- * Return: The value at the top of the stack.
+ * Return: Void
  * Or if the stack is empty print error message
  * and exits with EXIT_FAILURE
  */
@@ -79,3 +79,67 @@ void pint(stack_t **stack, unsigned int line_num)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+
+/**
+ * pop - Removes the top element from the stack.
+ * @stack: Double pointer to the top the stack.
+ * @line_num: Line number of the opcode in the file.
+ *
+ * Return: Void
+ */
+
+void pop(stack_t **stack, unsigned int line_num)
+{
+	stack_t *temp;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	temp = *stack;
+	*stack = (*stack)->next;
+
+	if (*stack)
+		(*stack)->prev = NULL;
+
+	free(temp);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
