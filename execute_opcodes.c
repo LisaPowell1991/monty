@@ -5,23 +5,18 @@
  * @opcode: Opcode to be executed
  * @value: Value associate with the opcode (if applicable)
  * @line_num: Line number in the monty file.
+ * @arg: argument type
  * @stack: A double pointer to the head of the stack.
  * Return: Executes the given opcode,
  * or error message if opcode is not recognised.
  */
-
 void execute_instruction(char *opcode, int value, char *arg,
-		stack_t **stack, unsigned int line_num)
+                         stack_t **stack, unsigned int line_num)
 {
+	(void)value;
+
 	if (strcmp(opcode, "push") == 0)
-	{
-		if (value == 0 && strcmp(arg, "0") != 0)
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_num);
-			exit(EXIT_FAILURE);
-		}
-		push(stack, value, line_num);
-	}
+		push(stack, arg, line_num);
 	else if (strcmp(opcode, "pall") == 0)
 		pall(stack, line_num);
 	else if (strcmp(opcode, "pop") == 0)
@@ -34,20 +29,36 @@ void execute_instruction(char *opcode, int value, char *arg,
 		add(stack, line_num);
 	else
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
+		fprintf(stderr, "L%d: unknown instruction %s\n",
+		        line_num, opcode);
 		exit(EXIT_FAILURE);
 	}
 }
 
-int is_integer(const char *str)
+/**
+ * is_valid_integer - checks if char is int
+ * @str: character being passed in
+ *
+ * Return: true or false depending on success
+ */
+bool is_valid_integer(const char *str)
 {
-    int i = 0;
-    if (str[0] == '-')
-        i = 1;
-    for (; str[i] != '\0'; i++)
-    {
-        if (!isdigit(str[i]))
-            return (0);
-    }
-    return (1);
+	if (str == NULL || *str == '\0') {
+		return false;
+	}
+
+	if (*str == '-') {
+		str++;
+	}
+
+	while (*str != '\0')
+	{
+		if (*str < '0' || *str > '9')
+		{
+			return false;
+		}
+		str++;
+	}
+
+	return true;
 }

@@ -3,42 +3,42 @@
 /**
  * push - Pushes n element onto the stack.
  * @stack: Double pointer to the head of the stack.
- * @value: Value to be pushed onto the stack.
+ * @arg: argument value
  * @line_num: Line number in the Monty code file.
  *
  * Return: Void
  */
-void push(stack_t **stack, int value, unsigned int line_num)
+void push(stack_t **stack, const char *arg, unsigned int line_num)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
-	(void)line_num;
+	stack_t *new_node;
+	int value;
 
+	if (!is_valid_integer(arg))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	value = atoi(arg);
+
+	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		handle_malloc_failure();
+		exit(EXIT_FAILURE);
 	}
+
 	new_node->n = value;
 	new_node->prev = NULL;
 	new_node->next = *stack;
 
 	if (*stack)
 		(*stack)->prev = new_node;
+
 	*stack = new_node;
 }
 
-/**
- * handle_malloc_failure - Handles malloc failure
- * by printing an error message
- * and exiting with failure status.
- *
- * Return: Void
- */
-void handle_malloc_failure(void)
-{
-	fprintf(stderr, "Error: malloc failed\n");
-	exit(EXIT_FAILURE);
-}
+
 
 /**
  * pall - Prints all the values on the stack.
@@ -48,16 +48,16 @@ void handle_malloc_failure(void)
  * Return: void
  */
 
-void pall(stack_t **stack, unsigned int line_num)
+void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
-	(void)line_num;
+	stack_t *current = (*stack)->next;
 
 	while (current)
 	{
 		printf("%d\n", current->n);
 		current = current->next;
 	}
+	(void)line_number;
 }
 
 /**

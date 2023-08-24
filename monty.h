@@ -8,10 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ERROR_MALLOC_FAILED "Error: malloc failed\n"
-#define ERROR_PINT_EMPTY_STACK "L%d: can't pint, stack empty\n"
-#define ERROR_POP_EMPTY_STACK "L%d: can't pop an empty stack\n"
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -43,8 +39,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /*opcodes_functions1.c*/
-void push(stack_t **stack, int value, unsigned int line_num);
-void handle_malloc_failure();
+void push(stack_t **stack, const char *arg, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
 void pop(stack_t **stack, unsigned int line_num);
@@ -59,6 +54,6 @@ void execute_instruction(char *opcode, int value, char *arg,
                 stack_t **stack, unsigned int line_num);
 
 
-int is_integer(const char *str);
+bool is_valid_integer(const char *str);
 
 #endif /* MONTY_H */
