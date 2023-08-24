@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define ERROR_MALLOC_FAILED "Error: malloc failed\n"
+#define ERROR_PINT_EMPTY_STACK "L%d: can't pint, stack empty\n"
+#define ERROR_POP_EMPTY_STACK "L%d: can't pop an empty stack\n"
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
