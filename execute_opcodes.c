@@ -11,7 +11,7 @@
  * or error message if opcode is not recognised.
  */
 void execute_instruction(char *opcode, int value, char *arg,
-                         stack_t **stack, unsigned int line_num)
+		stack_t **stack, unsigned int line_num)
 {
 	(void)value;
 
@@ -30,7 +30,7 @@ void execute_instruction(char *opcode, int value, char *arg,
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",
-		        line_num, opcode);
+			line_num, opcode);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -43,11 +43,13 @@ void execute_instruction(char *opcode, int value, char *arg,
  */
 bool is_valid_integer(const char *str)
 {
-	if (str == NULL || *str == '\0') {
-		return false;
+	if (str == NULL || *str == '\0')
+	{
+		return (false);
 	}
 
-	if (*str == '-') {
+	if (*str == '-')
+	{
 		str++;
 	}
 
@@ -55,10 +57,10 @@ bool is_valid_integer(const char *str)
 	{
 		if (*str < '0' || *str > '9')
 		{
-			return false;
+			return (false);
 		}
 		str++;
 	}
 
-	return true;
+	return (true);
 }

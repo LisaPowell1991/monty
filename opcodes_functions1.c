@@ -48,7 +48,7 @@ void push(stack_t **stack, const char *arg, unsigned int line_num)
  * Return: void
  */
 
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_num)
 {
 	stack_t *current = (*stack)->next;
 
@@ -57,7 +57,7 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
-	(void)line_number;
+	(void)line_num;
 }
 
 /**
