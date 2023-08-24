@@ -21,6 +21,8 @@ void execute_instruction(char *opcode, int value,
 		pop(stack, line_num);
 	else if (strcmp(opcode, "pint") == 0)
 		pint(stack, line_num);
+	else if (strcmp(opcode, "swap") == 0)
+		swap(stack,line_num);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);

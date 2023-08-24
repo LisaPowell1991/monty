@@ -47,6 +47,9 @@ void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
 void pop(stack_t **stack, unsigned int line_num);
 
+/*opcodes_function2.c*/
+void swap(stack_t **stack, unsigned int line_num);
+
 /* execute_opcodes.c */
 void execute_instruction(char *opcode, int value,stack_t **stack, unsigned int line_num);
 
