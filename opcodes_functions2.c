@@ -43,3 +43,17 @@ void add(stack_t **stack, unsigned int line_num)
 	(*stack)->next->n += (*stack)->n;
 	pop(stack, line_num);
 }
+
+/**
+ * nop - Doesn't do anything
+ * @stack: Double pointer to the head of the stack.
+ * @line_num: Line number in the Monty code file.
+ *
+ * Return: Void
+ */
+
+void nop(stack_t **stack, unsigned int line_num)
+{
+	(void)stack;
+	(void)line_num;
+}
