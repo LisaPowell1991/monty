@@ -23,6 +23,8 @@ void execute_instruction(char *opcode, int value,
 		pint(stack, line_num);
 	else if (strcmp(opcode, "swap") == 0)
 		swap(stack, line_num);
+	else if (strcmp(opcode, "add") == 0)
+		add(stack, line_num);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);

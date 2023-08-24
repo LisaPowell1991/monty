@@ -24,3 +24,22 @@ void swap(stack_t **stack, unsigned int line_num)
 	top_node->n = top_node->next->n;
 	top_node->next->n = top_value;
 }
+
+/**
+ * add - Adds the top 2 elements of the stack.
+ * @stack: Double pointer to the head of the stack.
+ * @line_num: Line number in the monty code file.
+ *
+ * Return: void
+ */
+
+void add(stack_t **stack, unsigned int line_num)
+{
+	if (!stack || !*stack || !((*stack)->next))
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n += (*stack)->n;
+	pop(stack, line_num);
+}

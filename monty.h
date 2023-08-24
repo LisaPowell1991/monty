@@ -50,8 +50,11 @@ void pop(stack_t **stack, unsigned int line_num);
 
 /*opcodes_function2.c*/
 void swap(stack_t **stack, unsigned int line_num);
+void add(stack_t **stack, unsigned int line_num);
 
 /* execute_opcodes.c */
 void execute_instruction(char *opcode, int value,stack_t **stack, unsigned int line_num);
+
+int is_valid_integer(const char *str);
 
 #endif /* MONTY_H */
