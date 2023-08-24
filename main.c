@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		{
 			arg = strtok(NULL, " \t\n");
 			value = (arg) ? atoi(arg) : 0;
-				execute_instruction(opcode, value, &stack, line_num);
+				execute_instruction(opcode, value, arg, &stack, line_num);
 		}
 	}
 	fclose(file);

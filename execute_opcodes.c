@@ -10,11 +10,18 @@
  * or error message if opcode is not recognised.
  */
 
-void execute_instruction(char *opcode, int value,
+void execute_instruction(char *opcode, int value, char *arg,
 		stack_t **stack, unsigned int line_num)
 {
 	if (strcmp(opcode, "push") == 0)
+	{
+		if (value == 0 && strcmp(arg, "0") != 0)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			exit(EXIT_FAILURE);
+		}
 		push(stack, value, line_num);
+	}
 	else if (strcmp(opcode, "pall") == 0)
 		pall(stack, line_num);
 	else if (strcmp(opcode, "pop") == 0)
@@ -30,4 +37,17 @@ void execute_instruction(char *opcode, int value,
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 		exit(EXIT_FAILURE);
 	}
+}
+
+int is_integer(const char *str)
+{
+    int i = 0;
+    if (str[0] == '-')
+        i = 1;
+    for (; str[i] != '\0'; i++)
+    {
+        if (!isdigit(str[i]))
+            return (0);
+    }
+    return (1);
 }
