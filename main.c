@@ -32,12 +32,12 @@ int main(int argc, char *argv[])
 	while (fgets(buffer, sizeof(buffer), file))
 	{
 		line_num++;
-		opcode = strtok(buffer, " \t\n");
+		opcode = strtok(buffer, " \t\b\n");
 		if (opcode && opcode[strlen(opcode) - 1] == '$')
 			opcode[strlen(opcode) - 1] = '\0';
 		if (opcode)
 		{
-			arg = strtok(NULL, " \t\n");
+			arg = strtok(NULL, " \t\b\n");
 			value = (arg) ? atoi(arg) : 0;
 				execute_instruction(opcode, value, arg, &stack, line_num);
 		}

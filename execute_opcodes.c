@@ -27,6 +27,8 @@ void execute_instruction(char *opcode, int value, char *arg,
 		swap(stack, line_num);
 	else if (strcmp(opcode, "add") == 0)
 		add(stack, line_num);
+	else if (strcmp(opcode, "sub") == 0)
+		sub(stack, line_num);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",

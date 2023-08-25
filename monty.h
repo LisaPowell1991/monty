@@ -48,6 +48,7 @@ void pop(stack_t **stack, unsigned int line_num);
 void swap(stack_t **stack, unsigned int line_num);
 void add(stack_t **stack, unsigned int line_num);
 void nop(stack_t **stack, unsigned int line_num);
+void sub(stack_t **stack, unsigned int line_num);
 
 /* execute_opcodes.c */
 void execute_instruction(char *opcode, int value, char *arg,
