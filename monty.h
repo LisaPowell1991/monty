@@ -52,7 +52,7 @@ void sub(stack_t **stack, unsigned int line_num);
 
 /* execute_opcodes.c */
 void execute_instruction(char *opcode, int value, char *arg,
-                stack_t **stack, unsigned int line_num);
+		stack_t **stack, unsigned int line_num);
 
 
 bool is_valid_integer(const char *str);
