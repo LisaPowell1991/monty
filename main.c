@@ -12,9 +12,9 @@
 int main(int argc, char *argv[])
 {
 	char buffer[1024];
+	int value;
 	unsigned int line_num = 0;
 	char *opcode, *arg;
-	int value;
 	FILE *file;
 	stack_t *stack = NULL;
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		{
 			arg = strtok(NULL, " \t\b\n");
 			value = (arg) ? atoi(arg) : 0;
-				execute_instruction(opcode, value, arg, &stack, line_num);
+			execute_instruction(opcode, value, arg, &stack, line_num);
 		}
 	}
 	fclose(file);

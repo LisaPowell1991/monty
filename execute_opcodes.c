@@ -18,7 +18,7 @@ void execute_instruction(char *opcode, int value, char *arg,
 	if (strcmp(opcode, "push") == 0)
 		push(stack, arg, line_num);
 	else if (strcmp(opcode, "pall") == 0)
-		pall(stack, line_num);
+		pall(*stack);
 	else if (strcmp(opcode, "pop") == 0)
 		pop(stack, line_num);
 	else if (strcmp(opcode, "pint") == 0)

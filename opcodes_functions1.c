@@ -10,17 +10,20 @@
  */
 void push(stack_t **stack, const char *arg, unsigned int line_num)
 {
-	stack_t *new_node;
 	int value;
+	stack_t *new_node;
 
-	if (!is_valid_integer(arg))
+	/* Validate if arg is a valid integer */
+	if (!arg || !arg[0])
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
+	/* Convert the argument to an integer */
 	value = atoi(arg);
 
+	/* Create a new node */
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
@@ -29,16 +32,9 @@ void push(stack_t **stack, const char *arg, unsigned int line_num)
 	}
 
 	new_node->n = value;
-	new_node->prev = NULL;
-	new_node->next = *stack;
-
-	if (*stack)
-		(*stack)->prev = new_node;
-
+	new_node->prev = *stack;
 	*stack = new_node;
 }
-
-
 
 /**
  * pall - Prints all the values on the stack.
@@ -48,16 +44,13 @@ void push(stack_t **stack, const char *arg, unsigned int line_num)
  * Return: void
  */
 
-void pall(stack_t **stack, unsigned int line_num)
+void pall(stack_t *stack)
 {
-	stack_t *current = (*stack)->next;
-
-	while (current)
+	while (stack)
 	{
-		printf("%d\n", current->n);
-		current = current->next;
+		printf("%d\n", stack->n);
+		stack = stack->prev;
 	}
-	(void)line_num;
 }
 
 /**

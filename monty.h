@@ -40,7 +40,7 @@ typedef struct instruction_s
 
 /*opcodes_functions1.c*/
 void push(stack_t **stack, const char *arg, unsigned int line_num);
-void pall(stack_t **stack, unsigned int line_num);
+void pall(stack_t *stack);
 void pint(stack_t **stack, unsigned int line_num);
 void pop(stack_t **stack, unsigned int line_num);
 
